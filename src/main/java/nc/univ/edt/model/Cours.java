@@ -1,10 +1,9 @@
 package nc.univ.edt.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Cours {
@@ -20,6 +19,23 @@ public class Cours {
 
     @Column
     private Date fin;
+
+    /**
+     * La liste des étudiants
+     */
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Eleve> etudiants = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Niveau niveau;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Salle salle;
+
+
+    public Cours() {
+
+    }
 
     public Date getDebut() {
         return debut;
@@ -41,5 +57,29 @@ public class Cours {
 
         this.debut = debut;
         this.fin = fin;
+    }
+
+    public List<Eleve> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(List<Eleve> etudiants) {
+        this.etudiants = etudiants;
+    }
+
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public void setSalle(Salle salle) {
+        this.salle = salle;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
     }
 }

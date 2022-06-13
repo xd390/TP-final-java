@@ -1,9 +1,6 @@
 package nc.univ.edt.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Eleve {
@@ -26,11 +23,21 @@ public class Eleve {
     @Column
     private String adresse;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Niveau niveau;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cours cours;
+
     public Eleve(String nom, String prenom, int age, String adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.adresse = adresse;
+    }
+
+    public Eleve() {
+
     }
 
     public String getNom() {
@@ -63,5 +70,21 @@ public class Eleve {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
+
+    public Cours getCours() {
+        return cours;
+    }
+
+    public void setCours(Cours cours) {
+        this.cours = cours;
     }
 }

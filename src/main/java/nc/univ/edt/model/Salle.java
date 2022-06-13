@@ -1,6 +1,8 @@
 package nc.univ.edt.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Salle {
@@ -19,6 +21,16 @@ public class Salle {
 
     @Column
     private String code;
+
+    /**
+     * La liste des cours
+     */
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Cours> cours = new ArrayList<>();
+
+    public Salle() {
+
+    }
 
     public String getCode() {
         return code;
@@ -40,5 +52,13 @@ public class Salle {
         this.nom = nom;
         this.code = code;
         this.nbPlaces = nbPlaces;
+    }
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
     }
 }

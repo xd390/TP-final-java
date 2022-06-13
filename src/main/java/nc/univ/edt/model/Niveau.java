@@ -1,9 +1,8 @@
 package nc.univ.edt.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Niveau {
@@ -20,9 +19,25 @@ public class Niveau {
     @Column
     private String libelle;
 
+    /**
+     * La liste des étudiants
+     */
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Eleve> etudiants = new ArrayList<>();
+
+    /**
+     * La liste des cours
+     */
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Cours> cours = new ArrayList<>();
+
     public Niveau(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
+    }
+
+    public Niveau() {
+
     }
 
     public String getCode() {
@@ -39,5 +54,21 @@ public class Niveau {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public List<Eleve> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(List<Eleve> etudiants) {
+        this.etudiants = etudiants;
+    }
+
+    public List<Cours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<Cours> cours) {
+        this.cours = cours;
     }
 }
