@@ -1,7 +1,5 @@
 package nc.univ.edt;
 
-package nc.univ.springdata;
-
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -19,8 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement // active le management des transaction
-@ComponentScan(basePackages = { "nc.univ.springdata.service" })
-@EnableJpaRepositories(basePackages = { "nc.univ.springdata.dao" }) // active les repositories
+@ComponentScan(basePackages = { "nc.univ.edt.service" })
+@EnableJpaRepositories(basePackages = { "nc.univ.edt.dao" }) // active les repositories
 public class Config {
 
     /**
