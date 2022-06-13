@@ -3,6 +3,9 @@ package nc.univ.edt;
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +17,26 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.Thymeleaf;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 
+@EnableWebMvc
 @Configuration
 @EnableTransactionManagement // active le management des transaction
 @ComponentScan(basePackages = { "nc.univ.edt.service" })
 @EnableJpaRepositories(basePackages = { "nc.univ.edt.dao" }) // active les repositories
 public class Config {
+    private ApplicationContext applicationContext;
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 
     /**
      * Retourne le bean correspondant a la source
@@ -58,7 +75,7 @@ public class Config {
         em.setDataSource(dataSource());
 
         // Configuration des modeles a analyser
-        em.setPackagesToScan(new String[] { "nc.univ.springdata.model" });
+        em.setPackagesToScan(new String[] { "nc.univ.edt.model" });
 
         // Configuration du JPA implementation (Hibernate)
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -86,5 +103,28 @@ public class Config {
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setApplicationContext(this.applicationContext);
+        return templateResolver;
+    }
+    @Bean
+    public SpringTemplateEngine templateEngine(){
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.setTemplateResolver(templateResolver());
+        return engine;
+    }
 
+    @Bean
+    public ViewResolver viewResolver(){
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setContentType("text/html; charset=UTF-8");
+        return resolver;
+    }
 }
