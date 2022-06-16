@@ -29,7 +29,7 @@ public class ControllerApp {
     }
 
     @GetMapping("cours/consultation")
-    public String list(Model model){
+    public String list(Model model) {
         List<String> salles = new ArrayList<String>();
         salles.add("A5");
         salles.add("B10");
@@ -37,6 +37,4 @@ public class ControllerApp {
         model.addAttribute("salles", salles);
         return "view/cours/consultationCours";
     }
-
-
 }

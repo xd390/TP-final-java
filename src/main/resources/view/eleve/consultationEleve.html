@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="../../static/css/main.css" media="screen" /
 <head>
     <meta charset="UTF-8">
     <title>Consultation eleve</title>
@@ -10,25 +11,27 @@
 <table>
     <caption>Table des Eleves</caption>
     <colgroup>
-        <col>
-        <col span="1" class="col0">
         <col span="4" class="col1">
+        <col span="1" class="col2">
     </colgroup>
     <tr>
-        <td> </td>
-        <th scopte="col">ID</th>
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
         <th scope="col">Age</th>
         <th scope="col">Adresse</th>
+        <th scope="col">Supression</th>
     </tr>
     <th:block th:each="eleve : ${eleves}">
     <tr>
-        <th scope="row">ID</th>
         <td th:text="${eleve.nom}"></td>
         <td th:text="${eleve.prenom}"></td>
         <td th:text="${eleve.age}"></td>
         <td th:text="${eleve.adresse}"></td>
+        <td>
+            <a href="supressionEleve">
+                <button>X</button>
+            </a>
+        </td>
     </tr>
     </th:block>
 </table>
