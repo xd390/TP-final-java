@@ -103,28 +103,4 @@ public class Config {
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
-    @Bean
-    public SpringResourceTemplateResolver templateResolver() {
-        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setPrefix("/WEB-INF/templates/");
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setApplicationContext(this.applicationContext);
-        return templateResolver;
-    }
-    @Bean
-    public SpringTemplateEngine templateEngine(){
-        SpringTemplateEngine engine = new SpringTemplateEngine();
-        engine.setTemplateResolver(templateResolver());
-        return engine;
-    }
-
-    @Bean
-    public ViewResolver viewResolver(){
-        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setTemplateEngine(templateEngine());
-        resolver.setCharacterEncoding("UTF-8");
-        resolver.setContentType("text/html; charset=UTF-8");
-        return resolver;
-    }
 }
