@@ -14,4 +14,9 @@ public class CoursService {
         CoursRepository coursRepository = (CoursRepository) applicationContext.getBean("CoursRepository");
         return (List<Cours>) coursRepository.findAll();
     }
+
+    public Cours save(Cours cours, ApplicationContext applicationContext){
+        CoursRepository coursRepository = (CoursRepository) applicationContext.getBean("CoursRepository");
+        return coursRepository.save(cours);
+    }
 }

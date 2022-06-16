@@ -11,9 +11,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ControllerApp {
@@ -48,11 +51,30 @@ public class ControllerApp {
         return "view/cours/consultationCours";
     }
 
+    @GetMapping("/cours/creation")
+    public String CreationCours(){
+        return "creationCours";
+    }
+
+    @PostMapping("/cours/creation")
+    public Cours creationCours(@RequestBody Cours cours){
+        return coursService.save(cours,applicationContext);
+    }
+
     @GetMapping("/eleve")
     public String consultationEleve(Model model){
         List<Eleve> eleves = eleveService.getAll(applicationContext);
         model.addAttribute("eleves",eleves);
         return "consultationEleve";
+    }
+
+    @GetMapping("/eleve/creation")
+    public String creationEleve(){
+        return "creationEleve";
+    }
+    @PostMapping("/eleve/creation")
+    public Eleve creationEleve(@RequestBody Eleve eleve){
+        return eleveService.save(eleve,applicationContext);
     }
 
     @GetMapping("/salle")
@@ -62,5 +84,26 @@ public class ControllerApp {
         return "consultationSalle";
     }
 
+    @DeleteMapping("/salle")
+    public Map<String, Boolean> suppressionSalle(@PathVariable("id") Long salleId ){
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted",salleService.delete(salleId,applicationContext));
+        return response;
+    }
+
+    @GetMapping("/salle/modification")
+    public String modificationSalle(@PathVariable("id") Long salleId,Model model){
+        model.addAttribute("salle",salleService.get(salleId,applicationContext));
+        return "modificationSalle";
+    }
+    @GetMapping("/salle/creation")
+    public String creationSalle(){
+        return "creationSalle";
+    }
+
+    @PostMapping("/salle/creation")
+    public Salle creationSalle(@RequestBody Salle salle) {
+        return salleService.save(salle,applicationContext);
+    }
 
 }

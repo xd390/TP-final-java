@@ -21,4 +21,9 @@ public class EleveService {
         EleveRepository eleveRepository = (EleveRepository) applicationContext.getBean("eleveRepository");
         return (List<Eleve>) eleveRepository.findAll();
     }
+
+    public Eleve save(Eleve eleve, ApplicationContext applicationContext){
+        EleveRepository eleveRepository = (EleveRepository) applicationContext.getBean("eleveRepository");
+        return eleveRepository.save(eleve);
+    }
 }
