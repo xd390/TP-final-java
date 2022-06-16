@@ -1,7 +1,11 @@
 package nc.univ.edt.controller;
 
+import nc.univ.edt.model.Cours;
 import nc.univ.edt.model.Eleve;
+import nc.univ.edt.model.Salle;
+import nc.univ.edt.service.CoursService;
 import nc.univ.edt.service.EleveService;
+import nc.univ.edt.service.SalleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -14,6 +18,8 @@ import java.util.List;
 @Controller
 public class ControllerApp {
     EleveService eleveService = new EleveService();
+    SalleService salleService = new SalleService();
+    CoursService coursService = new CoursService();
 
     @Autowired
     ApplicationContext applicationContext;
@@ -35,13 +41,10 @@ public class ControllerApp {
         return "form";
     }
 
-    @GetMapping("cours/consultation")
-    public String list(Model model) {
-        List<String> salles = new ArrayList<String>();
-        salles.add("A5");
-        salles.add("B10");
-        salles.add("C3");
-        model.addAttribute("salles", salles);
+    @GetMapping("cours")
+    public String consultationCours(Model model) {
+        List<Cours> cours = coursService.getAll(applicationContext);
+        model.addAttribute("cours", cours);
         return "view/cours/consultationCours";
     }
 
@@ -50,6 +53,13 @@ public class ControllerApp {
         List<Eleve> eleves = eleveService.getAll(applicationContext);
         model.addAttribute("eleves",eleves);
         return "consultationEleve";
+    }
+
+    @GetMapping("/salle")
+    public String consultationSalle(Model model){
+        List<Salle> salles = salleService.getAll(applicationContext);
+        model.addAttribute("salles",salles);
+        return "consultationSalle";
     }
 
 

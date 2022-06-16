@@ -26,7 +26,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-@EnableWebMvc
+
 @Configuration
 @EnableTransactionManagement // active le management des transaction
 @ComponentScan(basePackages = { "nc.univ.edt.service" })
