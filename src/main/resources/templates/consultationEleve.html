@@ -8,25 +8,42 @@
 <body>
 <h1>Page de Consultation des Eleves</h1>
 
+<a href="createEleve">
+    <button>Ajouter un Eleve</button>
+</a>
+
+<br>
+<br>
+
 <table>
     <caption>Table des Eleves</caption>
     <colgroup>
+        <col span="1" class="col3">
         <col span="4" class="col1">
+        <col span="1" class="col0">
         <col span="1" class="col2">
     </colgroup>
     <tr>
+        <th scope="col">ID</th>
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
         <th scope="col">Age</th>
         <th scope="col">Adresse</th>
+        <th scope="col">Modificaiton</th>
         <th scope="col">Supression</th>
     </tr>
     <th:block th:each="eleve : ${eleves}">
     <tr>
+        <td th:text="${eleve.id}"></td>
         <td th:text="${eleve.nom}"></td>
         <td th:text="${eleve.prenom}"></td>
         <td th:text="${eleve.age}"></td>
         <td th:text="${eleve.adresse}"></td>
+        <td>
+            <a href="modificationEleve">
+                <button>✏️</button>
+            </a>
+        </td>
         <td>
             <a href="supressionEleve">
                 <button>X</button>

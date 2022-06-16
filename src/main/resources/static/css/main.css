@@ -10,9 +10,13 @@
     background-color: #ffcccc;
 }
 
+.col3 {
+    background-color: #90EE90;
+}
+
 caption {
     padding: 8px;
-    caption-side: bottom;
+    caption-side: top;
 }
 
 table {
