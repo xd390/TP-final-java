@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultation eleve</title>
+</head>
+<body>
+<h1>Page de Consultation des Eleves</h1>
+
+<table>
+    <caption>Table des Eleves</caption>
+    <colgroup>
+        <col>
+        <col span="1" class="col0">
+        <col span="3" class="col1">
+    </colgroup>
+    <tr>
+        <td> </td>
+        <th scopte="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Code</th>
+        <th scope="col">Nb Places</th>
+    </tr>
+    <th:block th:each="salle : ${salles}">
+        <tr>
+            <th scope="row">ID</th>
+            <td th:text="${salle.nom}"></td>
+            <td th:text="${salle.code}"></td>
+            <td th:text="${salle.nbPlaces}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
