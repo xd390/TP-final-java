@@ -9,7 +9,7 @@
 <body>
 <h1>Creation d'un Eleve</h1>
 
-<form action="#" th:action="@{eleve/creation}" th:object="${eleve}" method="post">
+<form action="eleve/creation" th:object="${eleve}" method="post">
     <input type="text" th:field="*{nom}" placeholder="Nom" />
     <br>
     <input type="text" th:field="*{prenom}" placeholder="Prenom" />

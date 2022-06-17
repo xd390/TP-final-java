@@ -102,7 +102,7 @@ public class ControllerApp {
 
     }
     @PutMapping("/eleve/modification")
-    public Map<String,Boolean> modificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
+    public Map<String,Boolean> applyModificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
         Map<String, Boolean> response = new HashMap<>();
         response.put("updated", eleveService.update(eleveId,eleve, applicationContext));
         return response;
@@ -117,14 +117,8 @@ public class ControllerApp {
         eleveService.save(eleve,applicationContext);
         return "consultationEleve";
     }
-    @GetMapping("/eleve/modification")
-    public String modifyEleve(Model model){
-        model.addAttribute("eleve", new Eleve());
-        return "creationEleve";
-    }
     @GetMapping("/eleve/supression")
     public String deleteEleve(Model model){
-        model.addAttribute("eleve", new Eleve());
         return "eleve";
     }
 
