@@ -73,6 +73,11 @@ public class ControllerApp {
         coursService.update(cours, applicationContext);
         return "redirect:/cours";
     }
+    @GetMapping("/cours/details")
+    public String detailsCours(@RequestParam Long coursId,Model model){
+        model.addAttribute("cours",coursService.get(coursId,applicationContext));
+        return "detailsCours";
+    }
     /*
      * FIN PARTIE COURS
      *
