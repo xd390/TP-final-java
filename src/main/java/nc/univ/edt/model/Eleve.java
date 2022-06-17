@@ -1,6 +1,8 @@
 package nc.univ.edt.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Eleve {
@@ -26,8 +28,8 @@ public class Eleve {
     @ManyToOne(fetch = FetchType.LAZY)
     private Niveau niveau;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cours cours;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Cours> cours = new ArrayList<Cours>();
 
     public Eleve(String nom, String prenom, int age, String adresse) {
         this.nom = nom;
@@ -80,12 +82,16 @@ public class Eleve {
         this.niveau = niveau;
     }
 
-    public Cours getCours() {
+    public List<Cours> getCours() {
         return cours;
     }
 
-    public void setCours(Cours cours) {
+    public void setCours(List<Cours> cours) {
         this.cours = cours;
+    }
+
+    public void addCours(Cours cours){
+        this.cours.add(cours);
     }
 
     public Long getId() {

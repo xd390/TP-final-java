@@ -67,6 +67,10 @@ public class Cours {
         this.etudiants = etudiants;
     }
 
+    public void addEtudiant(Eleve eleve){
+        this.etudiants.add(eleve);
+    }
+
     public Salle getSalle() {
         return salle;
     }

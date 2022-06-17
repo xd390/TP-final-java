@@ -2,6 +2,7 @@ package nc.univ.edt.service;
 
 import nc.univ.edt.dao.CoursRepository;
 import nc.univ.edt.model.Cours;
+import nc.univ.edt.model.Eleve;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
@@ -47,4 +48,20 @@ public class CoursService {
         coursRepository.save(coursRepo);
         return true;
     }
+
+    /*
+    public boolean addEleve(Cours cours, Eleve eleve){
+        for (Cours c: eleve.getCours()){
+            if (cours.getDebut() > c.getDebut() & c.getDebut() < cours.getFin()){
+                return false;
+            }
+
+            if (cours.getSalle().getNbPlaces() > 31){
+                return false;
+            }
+            cours.addEtudiant(eleve);
+            eleve.addCours(cours);
+            return false;
+        }
+     */
 }
