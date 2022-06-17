@@ -14,6 +14,12 @@
     background-color: #90EE90;
 }
 
+tr th.sel:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+
 caption {
     padding: 8px;
     caption-side: top;
@@ -25,6 +31,7 @@ table {
     letter-spacing: 1px;
     font-family: sans-serif;
     font-size: .7rem;
+    margin-bottom: 1.5em;
 }
 
 td, th {
@@ -43,6 +50,17 @@ input[type=text], input[type=number]  {
     box-sizing: border-box;
     border-radius: .5em;
     margin-top: 1.2em;
+}
+
+input[type=search]{
+    border: 1px solid #707070;
+    width: 10em;
+    height: 2em;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: .5em;
+    margin-top: 1.2em;
+    margin-left: .5em;
 }
 
 .butadd{
