@@ -52,7 +52,7 @@ public class CoursService {
     }
 
     /*
-    public boolean addEleve(Cours cours, Eleve eleve){
+    public boolean addEleve(Cours cours, Eleve eleve, ApplicationContext applicationContext){
         for (Cours c: eleve.getCours()){
             if (cours.getDebut() > c.getDebut() & c.getDebut() < cours.getFin()){
                 return false;

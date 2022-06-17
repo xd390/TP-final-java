@@ -7,9 +7,9 @@
     <link rel="stylesheet"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
         $(document).ready( function () {
             $('#dataTable').DataTable();
         } );
@@ -65,7 +65,7 @@
                 </a>
             </td>
             <td>
-                <a th:href="@{/cours/details(coursId=${cour.id},model=${cour})}">
+                <a th:href="@{/cours/details(coursId=${cour.id},cour)}">
                     <button>➕</button>
                 </a>
             </td>

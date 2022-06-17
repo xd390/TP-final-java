@@ -33,6 +33,21 @@ public class ControllerApp {
         return "menu";
     }
 
+    @GetMapping(value="/cours/redirect")
+    public String coursRedirect(){
+        return "redirect:/cours";
+    }
+
+    @GetMapping(value="/eleve/redirect")
+    public String eleveRedirect(){
+        return "redirect:/eleve";
+    }
+
+    @GetMapping(value="/salle/redirect")
+    public String salleRedirect(){
+        return "redirect:/salle";
+    }
+
     /*
      * DEBUT PARTIE COURS
      *
@@ -64,12 +79,12 @@ public class ControllerApp {
         return "modificationCours";
     }
     @PostMapping("/cours/modification")
-    public String modificationCours(@ModelAttribute Cours cours){
+    public String applyModificationCours(@ModelAttribute Cours cours){
         coursService.update(cours, applicationContext);
         return "redirect:/cours";
     }
     @GetMapping("/cours/details")
-    public String detailsCours(@RequestParam Long coursId,Model model){
+    public String detailsCours(@RequestParam Long coursId, Model model){
         model.addAttribute("cours",coursService.get(coursId,applicationContext));
         return "detailsCours";
     }
