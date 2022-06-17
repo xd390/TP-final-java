@@ -39,7 +39,7 @@ public class ControllerApp {
     }
 
     /*
-     * DEBUT PARTI COURS
+     * DEBUT PARTIE COURS
      *
      * */
     @GetMapping("/cours")
@@ -74,12 +74,12 @@ public class ControllerApp {
         return response;
     }
     /*
-     * FIN PARTI COURS
+     * FIN PARTIE COURS
      *
      * */
 
     /*
-     * DEBUT PARTI ELEVE
+     * DEBUT PARTIE ELEVE
      *
      * */
 
@@ -113,12 +113,23 @@ public class ControllerApp {
         return "creationEleve";
     }
     @PostMapping("/eleve/creation")
-    public String creationEleve(@RequestBody Eleve eleve){
+    public String applyCreateEleve(@RequestBody Eleve eleve){
         eleveService.save(eleve,applicationContext);
         return "consultationEleve";
     }
+    @GetMapping("/eleve/modification")
+    public String modifyEleve(Model model){
+        model.addAttribute("eleve", new Eleve());
+        return "creationEleve";
+    }
+    @GetMapping("/eleve/supression")
+    public String deleteEleve(Model model){
+        model.addAttribute("eleve", new Eleve());
+        return "eleve";
+    }
+
     /*
-    * FIN PARTI ELEVE
+    * FIN PARTIE ELEVE
     *
     * */
 

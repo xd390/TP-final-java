@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{css/main.css}" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8">
-    <title>Consultation eleve</title>
+    <title>Consultation cours</title>
 </head>
 <body>
-<h1>Page de Consultation des Eleves</h1>
+<h1>Page de Consultation des Cours</h1>
+
+<a href="cours/creation">
+    <button class="butadd" method="get">Ajouter un Cours</button>
+</a>
+
+<a href="/">
+    <button class="butadd" method="get">Menu</button>
+</a>
+
+<br>
+<br>
 
 <table>
-    <caption>Table des Eleves</caption>
+    <caption>Table des Cours</caption>
     <colgroup>
-        <col>
+        <col span="1" class="col3">
+        <col span="2" class="col1">
         <col span="1" class="col0">
-        <col span="4" class="col1">
+        <col span="1" class="col2">
     </colgroup>
     <tr>
-        <td> </td>
-        <th scopte="col">ID</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">Age</th>
-        <th scope="col">Adresse</th>
+        <th scope="col">ID</th>
+        <th scope="col">Debut</th>
+        <th scope="col">Fin</th>
+        <th scope="col">Modificaiton</th>
+        <th scope="col">Supression</th>
     </tr>
-    <th:block th:each="eleve : ${eleves}">
+    <th:block th:each="cour : ${cours}">
         <tr>
-            <th scope="row">ID</th>
-            <td th:text="${eleve.nom}"></td>
-            <td th:text="${eleve.prenom}"></td>
-            <td th:text="${eleve.age}"></td>
-            <td th:text="${eleve.adresse}"></td>
+            <td th:text="${cour.id}"></td>
+            <td th:text="${cour.debut}"></td>
+            <td th:text="${cour.fin}"></td>
+            <td>
+                <a href="cours/modification">
+                    <button>✏️</button>
+                </a>
+            </td>
+            <td>
+                <a href="cours/supression">
+                    <button>X</button>
+                </a>
+            </td>
         </tr>
     </th:block>
 </table>

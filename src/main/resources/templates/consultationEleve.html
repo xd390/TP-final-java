@@ -13,6 +13,10 @@
     <button class="butadd" method="get">Ajouter un Eleve</button>
 </a>
 
+<a href="/">
+    <button class="butadd" method="get">Menu</button>
+</a>
+
 <br>
 <br>
 
@@ -41,12 +45,12 @@
         <td th:text="${eleve.age}"></td>
         <td th:text="${eleve.adresse}"></td>
         <td>
-            <a href="modificationEleve">
+            <a href="eleve/modification">
                 <button>✏️</button>
             </a>
         </td>
         <td>
-            <a href="supressionEleve">
+            <a href="eleve/supression">
                 <button>X</button>
             </a>
         </td>
