@@ -58,7 +58,7 @@ public class ControllerApp {
         return "creationCours";
     }
     @PostMapping("/cours/creation")
-    public String creationCours(@ModelAttribute Cours cours){
+    public String applyCreationCours(@ModelAttribute Cours cours){
         coursService.save(cours,applicationContext);
         return "redirect:/cours";
     }
@@ -141,18 +141,17 @@ public class ControllerApp {
         model.addAttribute("salle",salleService.get(salleId,applicationContext));
         return "modificationSalle";
     }
-    @PutMapping("/salle/modification")
-    public Map<String,Boolean> modificationSalle(@PathVariable("id") Long salleId,@ModelAttribute Salle salle){
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("updated", salleService.update(salleId,salle, applicationContext));
-        return response;
+    @PostMapping("/salle/modification")
+    public String applyModificationSalle(@ModelAttribute Salle salle){
+        salleService.update(salle, applicationContext));
+        return "redirect:/salle";
     }
     @GetMapping("/salle/creation")
     public String creationSalle(){
         return "creationSalle";
     }
     @PostMapping("/salle/creation")
-    public String creationSalle(@ModelAttribute Salle salle) {
+    public String applyCreationSalle(@ModelAttribute Salle salle) {
         salleService.save(salle,applicationContext);
         return "redirect:/salle";
     }

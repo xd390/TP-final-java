@@ -43,9 +43,9 @@ public class SalleService {
         return salle;
     }
 
-    public boolean update(Long id, Salle salle, ApplicationContext applicationContext){
+    public boolean update(Salle salle, ApplicationContext applicationContext){
         SalleRepository salleRepository = (SalleRepository) applicationContext.getBean("salleRepository");
-        Salle salleRepo = salleRepository.findById(id).orElseThrow(() -> new RuntimeException("Salle not found for this id "+id));
+        Salle salleRepo = salleRepository.findById(salle.getId()).orElseThrow(() -> new RuntimeException("Salle not found for this id "+salle.getId()));
         salleRepo.setCours(salle.getCours());
         salleRepo.setCode(salle.getCode());
         salleRepo.setNom(salle.getNom());
