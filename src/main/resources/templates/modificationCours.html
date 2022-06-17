@@ -13,9 +13,13 @@
     <br>
     <input type="number" th:field="*{id}" th:placeholder="cours.id" />
     <br>
-    <input type="date" th:field="*{debut}" th:placeholder="cours.debut" />
+    <label>Debut :</label>
     <br>
-    <input type="date" th:field="*{fin}" th:placeholder="cours.fin" />
+    <input type="datetime-local" th:field="*{debut}" placeholder="Debut" />
+    <br>
+    <label>Fin :</label>
+    <br>
+    <input type="datetime-local" th:field="*{fin}" placeholder="Fin" />
     <br>
     <br>
     <input class="butadd" type="submit" value="Valider"/>
