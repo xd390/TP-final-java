@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{css/main.css}" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8">
-    <title>Consultation eleve</title>
+    <link rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready( function () {
+            $('#dataTable').DataTable();
+        } );
+    </script>
+    <title>Consultation salles</title>
 </head>
 <body>
-<h1>Page de Consultation des Eleves</h1>
+<h1>Page de Consultation des Salles</h1>
 
-<table>
-    <caption>Table des Eleves</caption>
+<a href="eleve/creation">
+    <button class="butadd" method="get">Ajouter une Salle</button>
+</a>
+
+<a href="/">
+    <button class="butadd" method="get">Menu</button>
+</a>
+
+<br>
+<br>
+
+<table class="table table-striped" id="dataTable" data-page-length='50' data-order='[[1, "desc"]]'>
+    <caption>Table des Salles</caption>
     <colgroup>
+        <col span="1" class="col3">
         <col span="3" class="col1">
+        <col span="1" class="col0">
+        <col span="1" class="col2">
     </colgroup>
+    <thead>
     <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Code</th>
-        <th scope="col">Nb Places</th>
+        <th class="sel" scope="col">ID</th>
+        <th class="sel" scope="col">Nom</th>
+        <th class="sel" scope="col">Code</th>
+        <th class="sel" scope="col">Nb Places</th>
+        <th scope="col">Modificaiton</th>
+        <th scope="col">Supression</th>
     </tr>
+    </thead>
     <th:block th:each="salle : ${salles}">
         <tr>
+            <td th:text="${salle.id}"></td>
             <td th:text="${salle.nom}"></td>
             <td th:text="${salle.code}"></td>
             <td th:text="${salle.nbPlaces}"></td>
+            <td>
+                <a th:href="@{/salle/modification(salleId=${salle.id},salle)}">
+                    <button>✏️</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/deleteSalle(salleId=${salle.id})}">
+                    <button>X</button>
+                </a>
+            </td>
         </tr>
     </th:block>
 </table>
+<br>
+<br>
 </body>
 </html>

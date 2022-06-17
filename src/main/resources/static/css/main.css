@@ -43,7 +43,7 @@ td {
     text-align: center;
 }
 
-input[type=text], input[type=number]  {
+input[type=text], input[type=number], input[type=date] {
     border: 1px solid #707070;
     width: 30em;
     padding: 1em;
