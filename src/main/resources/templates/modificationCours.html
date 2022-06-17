@@ -10,9 +10,8 @@
 <h1>Modification d'un Cours</h1>
 
 <form action="#" th:action="@{/cours/modification}" th:object="${cours}" th:method="post">
-    <input type="hidden" name="_method" value="put"/>
     <br>
-    <input type="number" th:field="*{id}" th:placeholder="cours.id" disabled/>
+    <input type="number" th:field="*{id}" th:placeholder="cours.id" />
     <br>
     <input type="date" th:field="*{debut}" th:placeholder="cours.debut" />
     <br>

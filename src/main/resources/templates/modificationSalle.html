@@ -10,9 +10,8 @@
 <h1>Modification d'une Salle</h1>
 
 <form action="#" th:action="@{/salle/modification}" th:object="${salle}" th:method="post">
-    <input type="hidden" name="_method" value="put"/>
     <br>
-    <input type="number" th:field="*{id}" th:placeholder="salle.id" disabled/>
+    <input type="number" th:field="*{id}" th:placeholder="salle.id" />
     <br>
     <input type="text" th:field="*{nom}" th:placeholder="salle.nom" />
     <br>

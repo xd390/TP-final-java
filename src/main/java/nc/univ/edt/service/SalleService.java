@@ -35,11 +35,9 @@ public class SalleService {
         return true;
     }
 
-    public Optional<Salle> get(Long id, ApplicationContext applicationContext){
+    public Salle get(Long id, ApplicationContext applicationContext){
         SalleRepository salleRepository = (SalleRepository) applicationContext.getBean("salleRepository");
-        Optional<Salle> salle = salleRepository.findById(id);
-        if(salle.isEmpty())
-            throw new RuntimeException();
+        Salle salle = salleRepository.findById(id).orElseThrow(() -> new RuntimeException("Salle not found for this id "+id));
         return salle;
     }
 

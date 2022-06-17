@@ -48,7 +48,7 @@ public class ControllerApp {
         model.addAttribute("cours", cours);
         return "consultationCours";
     }
-    @GetMapping("/cours/suppression")
+    @GetMapping("/deleteCours")
     public String suppressionCours(@RequestParam Long coursId) {
         coursService.delete(coursId, applicationContext);
         return "redirect:/cours";
@@ -131,15 +131,15 @@ public class ControllerApp {
         model.addAttribute("salles",salles);
         return "consultationSalle";
     }
-    @DeleteMapping("/salle")
-    public Map<String, Boolean> suppressionSalle(@PathVariable("id") Long salleId ){
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted",salleService.delete(salleId,applicationContext));
-        return response;
+    @GetMapping ("/deleteSalle")
+    public String suppressionSalle(@RequestParam Long salleId ){
+        salleService.delete(salleId,applicationContext);
+        return "redirect:/salle";
     }
     @GetMapping("/salle/modification")
-    public String modificationSalle(@PathVariable("id") Long salleId,Model model){
-        model.addAttribute("salle",salleService.get(salleId,applicationContext));
+    public String modificationSalle(@RequestParam Long salleId,Model model){
+        Salle salle = salleService.get(salleId,applicationContext);
+        model.addAttribute("salle",salle);
         return "modificationSalle";
     }
     @PostMapping("/salle/modification")
