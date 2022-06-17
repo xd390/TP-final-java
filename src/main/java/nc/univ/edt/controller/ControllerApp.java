@@ -116,11 +116,6 @@ public class ControllerApp {
         eleveService.save(eleve,applicationContext);
         return "redirect:/eleve";
     }
-    @GetMapping("/eleve/supression")
-    public String deleteEleve(Model model){
-        return "eleve";
-    }
-
     /*
     * FIN PARTIE ELEVE
     *

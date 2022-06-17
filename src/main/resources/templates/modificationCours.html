@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{../css/main.css}" rel="stylesheet"/>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Modification d'un Cours</title>
 </head>
 <body>
+<h1>Modification d'un Cours</h1>
 
+<form action="#" th:action="@{/cours/modification}" th:object="${cours}" th:method="post">
+    <input type="hidden" name="_method" value="put"/>
+    <br>
+    <input type="number" th:field="*{id}" th:placeholder="cours.id" disabled/>
+    <br>
+    <input type="date" th:field="*{debut}" th:placeholder="cours.debut" />
+    <br>
+    <input type="date" th:field="*{fin}" th:placeholder="cours.fin" />
+    <br>
+    <br>
+    <input class="butadd" type="submit" value="Valider"/>
+</form>
 </body>
 </html>

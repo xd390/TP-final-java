@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{../css/main.css}" rel="stylesheet"/>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Creation d'un Cours</title>
 </head>
 <body>
+<h1>Creation d'un Cours</h1>
+
+<form action="#" th:action="@{/cours/creation}" th:object="${cours}" method="post">
+    <input type="date" th:field="*{debut}" placeholder="Debut" />
+    <br>
+    <input type="date" th:field="*{fin}" placeholder="Fin" />
+    <br>
+    <br>
+    <input class="butadd" type="submit" value="Valider"/>
+</form>
+<br>
+<br>
+<a href="/">
+    <button class="butadd" method="get">Retour</button>
+</a>
 
 </body>
 </html>

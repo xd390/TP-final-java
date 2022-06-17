@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{../css/main.css}" rel="stylesheet"/>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Modification d'une Salle</title>
 </head>
 <body>
+<h1>Modification d'une Salle</h1>
 
+<form action="#" th:action="@{/salle/modification}" th:object="${salle}" th:method="post">
+    <input type="hidden" name="_method" value="put"/>
+    <br>
+    <input type="number" th:field="*{id}" th:placeholder="salle.id" disabled/>
+    <br>
+    <input type="text" th:field="*{nom}" th:placeholder="salle.nom" />
+    <br>
+    <input type="text" th:field="*{code}" th:placeholder="salle.code" />
+    <br>
+    <input type="number" th:field="*{nbPlaces}" th:placeholder="salle.nbPlaces" />
+    <br>
+    <br>
+    <input class="butadd" type="submit" value="Valider"/>
+</form>
 </body>
 </html>
