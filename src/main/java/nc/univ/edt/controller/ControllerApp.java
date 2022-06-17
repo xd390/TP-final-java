@@ -39,7 +39,7 @@ public class ControllerApp {
     }
 
     /*
-     * DEBUT PARTI COURS
+     * DEBUT PARTIE COURS
      *
      * */
     @GetMapping("/cours")
@@ -75,12 +75,12 @@ public class ControllerApp {
         return response;
     }
     /*
-     * FIN PARTI COURS
+     * FIN PARTIE COURS
      *
      * */
 
     /*
-     * DEBUT PARTI ELEVE
+     * DEBUT PARTIE ELEVE
      *
      * */
 
@@ -103,7 +103,7 @@ public class ControllerApp {
 
     }
     @PutMapping("/eleve/modification")
-    public Map<String,Boolean> modificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
+    public Map<String,Boolean> applyModificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
         Map<String, Boolean> response = new HashMap<>();
         response.put("updated", eleveService.update(eleveId,eleve, applicationContext));
         return response;
@@ -114,13 +114,17 @@ public class ControllerApp {
         return "creationEleve";
     }
     @PostMapping("/eleve/creation")
-    public String creationEleve(@ModelAttribute Eleve eleve){
-        Map<String, Boolean> response = new HashMap<>();
+    public String applyCreateEleve(@RequestBody Eleve eleve){
         eleveService.save(eleve,applicationContext);
         return "redirect:/eleve";
     }
+    @GetMapping("/eleve/supression")
+    public String deleteEleve(Model model){
+        return "eleve";
+    }
+
     /*
-    * FIN PARTI ELEVE
+    * FIN PARTIE ELEVE
     *
     * */
 
