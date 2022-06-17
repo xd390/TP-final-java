@@ -35,3 +35,36 @@ td, th {
 td {
     text-align: center;
 }
+
+input[type=text], input[type=number]  {
+    border: 1px solid #707070;
+    width: 30em;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: .5em;
+    margin-top: 1.2em;
+}
+
+.butadd{
+    background-color: rgba(14, 123, 2, 0.92);
+    border: none;
+    width: 10em;
+    color: white;
+    font-weight: bold;
+    padding: 1em 0;
+    border-radius: .5em;
+    font-size: .75em;
+    cursor: pointer;
+}
+
+.butsel{
+    background-color: rgba(14, 123, 2, 0.92);
+    border: none;
+    width: 23em;
+    color: white;
+    font-weight: bold;
+    padding: 1em 0;
+    border-radius: .5em;
+    font-size: .75em;
+    cursor: pointer;
+}

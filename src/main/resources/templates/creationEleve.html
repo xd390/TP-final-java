@@ -1,32 +1,25 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{css/main.css}" rel="stylesheet"/>
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{../css/main.css}" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8"/>
     <title>Creation d'un Eleve</title>
 </head>
 <body>
+<h1>Creation d'un Eleve</h1>
 
-<form th:action="@{/addEleve}" th:object="${Eleve}" method="post">
-    <div>
-        <label>Nom:</label>
-        <input type="text" th:field="*{Eleve.nom}" placeholder="string" />
-    </div>
-    <div>
-        <label>Prenom:</label>
-        <input type="text" th:field="*{Eleve.prenom}" placeholder="string" />
-    </div>
-
-    <div>
-        <label>Age:</label>
-        <input type="number" th:field="*{Eleve.age}" placeholder="integer" />
-    </div>
-    <div>
-        <label>Adresse:</label>
-        <input type="text" th:field="*{Eleve.adresse}" placeholder="string" />
-    </div>
-
-    <input type="submit" value="Valider"/>
+<form action="#" th:action="@{eleve/creation}" th:object="${eleve}" method="post">
+    <input type="text" th:field="*{nom}" placeholder="Nom" />
+    <br>
+    <input type="text" th:field="*{prenom}" placeholder="Prenom" />
+    <br>
+    <input type="number" th:field="*{age}" placeholder="Age" />
+    <br>
+    <input type="text" th:field="*{adresse}" placeholder="Adresse" />
+    <br>
+    <br>
+    <input class="butadd" type="submit" value="Valider"/>
 </form>
 </body>
 </html>

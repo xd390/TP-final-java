@@ -28,7 +28,12 @@ public class ControllerApp {
     ApplicationContext applicationContext;
 
 
-    @GetMapping(value = "consultation/salle/{salle}")
+    @GetMapping(value="/")
+    public String menu(){
+        return "menu";
+    }
+
+    @GetMapping(value = "salle/{salle}")
     public String consultationSalleStatic(@RequestParam String salle){
         return salle;
     }
@@ -55,12 +60,14 @@ public class ControllerApp {
         return "consultationEleve";
     }
     @GetMapping("/eleve/creation")
-    public String creationEleve(){
+    public String createEleve(Model model){
+        model.addAttribute("eleve", new Eleve());
         return "creationEleve";
     }
     @PostMapping("/eleve/creation")
-    public Eleve creationEleve(@RequestBody Eleve eleve){
-        return eleveService.save(eleve,applicationContext);
+    public String creationEleve(@RequestBody Eleve eleve){
+        eleveService.save(eleve,applicationContext);
+        return "consultationEleve";
     }
 
     @GetMapping("/salle")
