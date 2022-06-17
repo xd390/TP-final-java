@@ -143,7 +143,7 @@ public class ControllerApp {
     }
     @PostMapping("/salle/modification")
     public String applyModificationSalle(@ModelAttribute Salle salle){
-        salleService.update(salle, applicationContext));
+        salleService.update(salle, applicationContext);
         return "redirect:/salle";
     }
     @GetMapping("/salle/creation")
