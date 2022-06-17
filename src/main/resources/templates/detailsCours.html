@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../static/css/main.css">
+<link th:href="@{css/main.css}" rel="stylesheet"/>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script language="javascript" type="text/javascript">
+    $(document).ready( function () {
+      $('#dataTable').DataTable();
+    } );
+  </script>
+  <title>Details cours</title>
+</head>
+<body>
+<h1>Page de Details des Cours</h1>
+
+
+<a href="/">
+  <button class="butadd" method="get">Menu</button>
+</a>
+
+<br>
+<br>
+
+<table class="table table-striped" id="dataTable" data-page-length='50' data-order='[[1, "desc"]]'>
+  <caption>Table des Cours</caption>
+  <colgroup>
+    <col span="1" class="col3">
+    <col span="1" class="col0">
+    <col span="5" class="col1">
+  </colgroup>
+  <thead>
+  <tr>
+    <th class="sel" scope="col">ID</th>
+    <th class="sel" scope="col">Salle</th>
+    <th class="sel" scope="col">Debut</th>
+    <th class="sel" scope="col">Fin</th>
+    <th class="sel" scope="col">Code</th>
+    <th class="sel" scope="col">Libelle</th>
+    <th class="sel" scope="col">Eleves</th>
+  </tr>
+  </thead>
+  <th:block th:each="cour : ${cours}">
+    <tr>
+      <td th:text="${cour.id}"></td>
+      <td th:text="${cour.salle}"></td>
+      <td th:text="${cour.debut}"></td>
+      <td th:text="${cour.fin}"></td>
+      <td th:text="${cour.code}"></td>
+      <td th:text="${cour.libelle}"></td>
+      <td th:text="${cour.eleves}"></td>
+    </tr>
+  </th:block>
+</table>
+<br>
+<br>
+</body>
+</html>

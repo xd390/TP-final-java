@@ -59,7 +59,7 @@ public class Cours {
         this.fin = fin;
     }
 
-    public Cours(Date debut, Date fin) throws ParseException {
+    public Cours(Date debut, Date fin){
         this.debut = debut;
         this.fin = fin;
     }

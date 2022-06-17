@@ -33,11 +33,6 @@ public class ControllerApp {
         return "menu";
     }
 
-    @GetMapping(value = "salle/{salle}")
-    public String consultationSalleStatic(@RequestParam String salle){
-        return salle;
-    }
-
     /*
      * DEBUT PARTIE COURS
      *

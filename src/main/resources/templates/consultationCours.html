@@ -37,6 +37,7 @@
         <col span="2" class="col1">
         <col span="1" class="col0">
         <col span="1" class="col2">
+        <col span="1" class="col4">
     </colgroup>
     <thead>
     <tr>
@@ -45,6 +46,7 @@
         <th class="sel" scope="col">Fin</th>
         <th scope="col">Modification</th>
         <th scope="col">Suppression</th>
+        <th scope="col">Details</th>
     </tr>
     </thead>
     <th:block th:each="cour : ${cours}">
@@ -60,6 +62,11 @@
             <td>
                 <a th:href="@{/deleteCours(coursId=${cour.id})}">
                     <button>❌</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/cours/details(coursId=${cour.id},model=${cour})}">
+                    <button>➕</button>
                 </a>
             </td>
         </tr>
