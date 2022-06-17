@@ -10,9 +10,13 @@
 <h1>Creation d'un Cours</h1>
 
 <form action="#" th:action="@{/cours/creation}" th:object="${cours}" method="post">
-    <input type="date" th:field="*{debut}" placeholder="Debut" />
+    <label>Debut :</label>
     <br>
-    <input type="date" th:field="*{fin}" placeholder="Fin" />
+    <input type="datetime-local" th:field="*{debut}" placeholder="Debut" />
+    <br>
+    <label>Fin :</label>
+    <br>
+    <input type="datetime-local" th:field="*{fin}" placeholder="Debut" />
     <br>
     <br>
     <input class="butadd" type="submit" value="Valider"/>

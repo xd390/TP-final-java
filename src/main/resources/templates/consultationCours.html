@@ -43,8 +43,8 @@
         <th class="sel" scope="col">ID</th>
         <th class="sel" scope="col">Debut</th>
         <th class="sel" scope="col">Fin</th>
-        <th scope="col">Modificaiton</th>
-        <th scope="col">Supression</th>
+        <th scope="col">Modification</th>
+        <th scope="col">Suppression</th>
     </tr>
     </thead>
     <th:block th:each="cour : ${cours}">
@@ -53,13 +53,13 @@
             <td th:text="${cour.debut}"></td>
             <td th:text="${cour.fin}"></td>
             <td>
-                <a th:href="@{/cour/modification(courId=${cour.id},cour)}">
+                <a th:href="@{/cours/modification(coursId=${cour.id},cour)}">
                     <button>✏️</button>
                 </a>
             </td>
             <td>
-                <a th:href="@{/deleteCour(courId=${cour.id})}">
-                    <button>X</button>
+                <a th:href="@{/deleteCour(coursId=${cour.id})}">
+                    <button>❌</button>
                 </a>
             </td>
         </tr>

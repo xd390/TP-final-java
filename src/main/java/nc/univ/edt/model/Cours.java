@@ -1,6 +1,10 @@
 package nc.univ.edt.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +19,11 @@ public class Cours {
     private Long id;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date debut;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date fin;
 
     /**
@@ -53,8 +59,7 @@ public class Cours {
         this.fin = fin;
     }
 
-    public Cours(Date debut, Date fin){
-
+    public Cours(Date debut, Date fin) throws ParseException {
         this.debut = debut;
         this.fin = fin;
     }

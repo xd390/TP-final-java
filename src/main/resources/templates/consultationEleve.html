@@ -45,8 +45,8 @@
             <th class="sel" scope="col">Prenom</th>
             <th class="sel" scope="col">Age</th>
             <th class="sel" scope="col">Adresse</th>
-            <th scope="col">Modificaiton</th>
-            <th scope="col">Supression</th>
+            <th scope="col">Modification</th>
+            <th scope="col">Suppression</th>
         </tr>
     </thead>
     <th:block th:each="eleve : ${eleves}">
@@ -63,7 +63,7 @@
         </td>
         <td>
             <a th:href="@{/deleteEleve(eleveId=${eleve.id})}">
-                <button>X</button>
+                <button>❌</button>
             </a>
         </td>
     </tr>

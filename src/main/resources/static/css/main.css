@@ -43,13 +43,14 @@ td {
     text-align: center;
 }
 
-input[type=text], input[type=number], input[type=date] {
+input[type=text], input[type=number], input[type=date], input[type=datetime-local] {
     border: 1px solid #707070;
     width: 30em;
     padding: 1em;
     box-sizing: border-box;
     border-radius: .5em;
     margin-top: 1.2em;
+    margin-bottom: .55em;
 }
 
 input[type=search]{
