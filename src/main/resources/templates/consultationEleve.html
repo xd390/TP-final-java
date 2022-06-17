@@ -45,12 +45,12 @@
         <td th:text="${eleve.age}"></td>
         <td th:text="${eleve.adresse}"></td>
         <td>
-            <a href="eleve/modification">
+            <a th:href="@{/eleve/modification(eleveId=${eleve.id},eleve)}">
                 <button>✏️</button>
             </a>
         </td>
         <td>
-            <a href="eleve/supression">
+            <a th:href="@{/deleteEleve(eleveId=${eleve.id})}">
                 <button>X</button>
             </a>
         </td>

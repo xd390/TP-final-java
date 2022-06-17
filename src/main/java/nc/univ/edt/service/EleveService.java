@@ -45,9 +45,9 @@ public class EleveService {
         return true;
     }
 
-    public Boolean update(Long id, Eleve eleve, ApplicationContext applicationContext){
+    public Boolean update(Eleve eleve, ApplicationContext applicationContext){
         EleveRepository eleveRepository = (EleveRepository) applicationContext.getBean("eleveRepository");
-        Eleve eleveRepo = eleveRepository.findById(id).orElseThrow(() -> new RuntimeException("Eleve not found for this id "+id));
+        Eleve eleveRepo = eleveRepository.findById(eleve.getId()).orElseThrow(() -> new RuntimeException("Eleve not found for this id "+eleve.getId()));
         eleveRepo.setAdresse(eleve.getAdresse());
         eleveRepo.setAge(eleve.getAge());
         eleveRepo.setCours(eleve.getCours());

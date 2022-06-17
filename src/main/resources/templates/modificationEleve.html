@@ -9,19 +9,21 @@
 <body>
 <h1>Modification d'un Eleve</h1>
 
-<th:block th:object="${oldEleve}">
-<form action="#" th:action="@{eleve/creation}" th:object="${eleve}" method="post">
-    <input type="text" th:field="*{nom}" th:placeholder="oldEleve.nom" />
+<form action="#" th:action="@{/eleve/modification}" th:object="${eleve}" th:method="post">
+    <input type="hidden" name="_method" value="put"/>
     <br>
-    <input type="text" th:field="*{prenom}" th:placeholder="oldEleve.prenom" />
+    <input type="number" th:field="*{id}" th:placeholder="eleve.id" disabled/>
     <br>
-    <input type="number" th:field="*{age}" th:placeholder="oldEleve.age" />
+    <input type="text" th:field="*{nom}" th:placeholder="eleve.nom" />
     <br>
-    <input type="text" th:field="*{adresse}" th:placeholder="oldEleve.adresse" />
+    <input type="text" th:field="*{prenom}" th:placeholder="eleve.prenom" />
+    <br>
+    <input type="number" th:field="*{age}" th:placeholder="eleve.age" />
+    <br>
+    <input type="text" th:field="*{adresse}" th:placeholder="eleve.adresse" />
     <br>
     <br>
     <input class="butadd" type="submit" value="Valider"/>
 </form>
-</th:block>
 </body>
 </html>

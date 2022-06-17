@@ -36,9 +36,9 @@ public class CoursService {
         return cours;
     }
 
-    public boolean update(Long id, Cours cours, ApplicationContext applicationContext){
+    public boolean update(Cours cours, ApplicationContext applicationContext){
         CoursRepository coursRepository = (CoursRepository) applicationContext.getBean("CoursRepository");
-        Cours coursRepo = coursRepository.findById(id).orElseThrow(() -> new RuntimeException("Cours not found for this id "+id));
+        Cours coursRepo = coursRepository.findById(cours.getId()).orElseThrow(() -> new RuntimeException("Cours not found for this id "+cours.getId()));
         coursRepo.setDebut(cours.getDebut());
         coursRepo.setEtudiants(cours.getEtudiants());
         coursRepo.setNiveau(cours.getNiveau());

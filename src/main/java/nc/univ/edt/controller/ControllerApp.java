@@ -49,7 +49,7 @@ public class ControllerApp {
         return "consultationCours";
     }
     @DeleteMapping("/cours")
-    public Map<String,Boolean> suppressionCours(@PathVariable("id") Long coursId) {
+    public Map<String,Boolean> suppressionCours(@RequestParam Long coursId) {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", coursService.delete(coursId, applicationContext));
         return response;
@@ -64,14 +64,14 @@ public class ControllerApp {
         return "redirect:/cours";
     }
     @GetMapping("/cours/modification")
-    public String modifcationCours(@PathVariable("id") Long coursId, Model model){
+    public String modifcationCours(@RequestParam Long coursId, Model model){
         model.addAttribute("cours",coursService.get(coursId,applicationContext));
         return "modificationCours";
     }
     @PutMapping("/cours/modification")
-    public Map<String,Boolean> modificationCours(@PathVariable("id") Long coursId,@ModelAttribute Cours cours){
+    public Map<String,Boolean> modificationCours(@ModelAttribute Cours cours){
         Map<String, Boolean> response = new HashMap<>();
-        response.put("updated", coursService.update(coursId,cours, applicationContext));
+        response.put("updated", coursService.update(cours, applicationContext));
         return response;
     }
     /*
@@ -90,22 +90,21 @@ public class ControllerApp {
         model.addAttribute("eleves",eleves);
         return "consultationEleve";
     }
-    @DeleteMapping("/eleve")
-    public Map<String,Boolean> suppressionEleve(@PathVariable("id") Long eleveId){
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted",eleveService.delete(eleveId,applicationContext));
-        return response;
+    @GetMapping("/deleteEleve")
+    public String suppressionEleve(@RequestParam Long eleveId){
+    eleveService.delete(eleveId,applicationContext);
+        return "redirect:/eleve";
     }
     @GetMapping("/eleve/modification")
-    public String modificationEleve(@PathVariable("id") Long eleveId,Model model){
+    public String modificationEleve(@RequestParam Long eleveId,Model model){
         model.addAttribute("eleve",eleveService.get(eleveId,applicationContext));
         return "modificationEleve";
 
     }
     @PutMapping("/eleve/modification")
-    public Map<String,Boolean> applyModificationEleve(@PathVariable("id") Long eleveId,@ModelAttribute Eleve eleve){
+    public Map<String,Boolean> applyModificationEleve(@ModelAttribute Eleve eleve){
         Map<String, Boolean> response = new HashMap<>();
-        response.put("updated", eleveService.update(eleveId,eleve, applicationContext));
+        response.put("updated", eleveService.update(eleve, applicationContext));
         return response;
     }
     @GetMapping("/eleve/creation")
