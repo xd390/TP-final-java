@@ -96,16 +96,15 @@ public class ControllerApp {
         return "redirect:/eleve";
     }
     @GetMapping("/eleve/modification")
-    public String modificationEleve(@RequestParam Long eleveId,Model model){
-        model.addAttribute("eleve",eleveService.get(eleveId,applicationContext));
+    public String modificationEleve(@RequestParam Long eleveId, Model model){
+        Eleve eleve = eleveService.get(eleveId,applicationContext);
+        model.addAttribute("eleve",eleve);
         return "modificationEleve";
-
     }
-    @PutMapping("/eleve/modification")
-    public Map<String,Boolean> applyModificationEleve(@ModelAttribute Eleve eleve){
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("updated", eleveService.update(eleve, applicationContext));
-        return response;
+    @PostMapping ("/eleve/modification")
+    public String applyModificationEleve(@ModelAttribute Eleve eleve){
+        eleveService.update(eleve, applicationContext);
+        return "redirect:/eleve";
     }
     @GetMapping("/eleve/creation")
     public String createEleve(Model model){

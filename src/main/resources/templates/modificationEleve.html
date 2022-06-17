@@ -10,9 +10,8 @@
 <h1>Modification d'un Eleve</h1>
 
 <form action="#" th:action="@{/eleve/modification}" th:object="${eleve}" th:method="post">
-    <input type="hidden" name="_method" value="put"/>
     <br>
-    <input type="number" th:field="*{id}" th:placeholder="eleve.id" disabled/>
+    <input type="number" th:field="*{id}" th:placeholder="eleve.id" />
     <br>
     <input type="text" th:field="*{nom}" th:placeholder="eleve.nom" />
     <br>

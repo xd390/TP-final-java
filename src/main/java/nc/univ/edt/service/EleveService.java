@@ -28,11 +28,9 @@ public class EleveService {
         return eleveRepository.save(eleve);
     }
 
-    public Optional<Eleve> get(Long id, ApplicationContext applicationContext){
+    public Eleve get(Long id, ApplicationContext applicationContext){
         EleveRepository eleveRepository = (EleveRepository) applicationContext.getBean("eleveRepository");
-        Optional<Eleve> eleve = eleveRepository.findById(id);
-        if(eleve.isEmpty())
-            throw new RuntimeException();
+        Eleve eleve = eleveRepository.findById(id).orElseThrow(() -> new RuntimeException("Eleve not found for this id "+id));
         return eleve;
     }
 
