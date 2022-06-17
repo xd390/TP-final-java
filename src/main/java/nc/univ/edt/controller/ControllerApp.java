@@ -48,11 +48,10 @@ public class ControllerApp {
         model.addAttribute("cours", cours);
         return "consultationCours";
     }
-    @DeleteMapping("/cours")
-    public Map<String,Boolean> suppressionCours(@RequestParam Long coursId) {
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", coursService.delete(coursId, applicationContext));
-        return response;
+    @GetMapping("/cours/suppression")
+    public String suppressionCours(@RequestParam Long coursId) {
+        coursService.delete(coursId, applicationContext);
+        return "redirect:/cours";
     }
     @GetMapping("/cours/creation")
     public String creationCours(){
@@ -68,11 +67,10 @@ public class ControllerApp {
         model.addAttribute("cours",coursService.get(coursId,applicationContext));
         return "modificationCours";
     }
-    @PutMapping("/cours/modification")
-    public Map<String,Boolean> modificationCours(@ModelAttribute Cours cours){
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("updated", coursService.update(cours, applicationContext));
-        return response;
+    @PostMapping("/cours/modification")
+    public String modificationCours(@ModelAttribute Cours cours){
+        coursService.update(cours, applicationContext);
+        return "redirect:/cours";
     }
     /*
      * FIN PARTIE COURS
@@ -92,7 +90,7 @@ public class ControllerApp {
     }
     @GetMapping("/deleteEleve")
     public String suppressionEleve(@RequestParam Long eleveId){
-    eleveService.delete(eleveId,applicationContext);
+        eleveService.delete(eleveId,applicationContext);
         return "redirect:/eleve";
     }
     @GetMapping("/eleve/modification")

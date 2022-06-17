@@ -5,11 +5,13 @@ import nc.univ.edt.model.Cours;
 import nc.univ.edt.model.Salle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SalleService {
     @Autowired
     EntityManager entityManager;

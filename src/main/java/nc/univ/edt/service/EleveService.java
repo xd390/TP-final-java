@@ -4,11 +4,13 @@ import nc.univ.edt.dao.EleveRepository;
 import nc.univ.edt.model.Eleve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EleveService {
     @Autowired
     EntityManager entityManager;
