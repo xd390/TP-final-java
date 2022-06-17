@@ -71,4 +71,8 @@ public class Niveau {
     public void setCours(List<Cours> cours) {
         this.cours = cours;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

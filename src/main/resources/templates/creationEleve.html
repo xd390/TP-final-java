@@ -1,15 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="../static/css/main.css">
 <link th:href="@{../css/main.css}" rel="stylesheet"/>
 <head>
-    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Creation d'un Eleve</title>
 </head>
 <body>
 <h1>Creation d'un Eleve</h1>
 
-<form action="#" th:action="@{eleve/creation}" th:object="${eleve}" method="post">
+<form action="#" th:action="@{/eleve/creation}" th:object="${eleve}" method="post">
     <input type="text" th:field="*{nom}" placeholder="Nom" />
     <br>
     <input type="text" th:field="*{prenom}" placeholder="Prenom" />

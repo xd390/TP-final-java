@@ -46,7 +46,7 @@ public class ControllerApp {
     public String consultationCours(Model model) {
         List<Cours> cours = coursService.getAll(applicationContext);
         model.addAttribute("cours", cours);
-        return "view/cours/consultationCours";
+        return "consultationCours";
     }
     @DeleteMapping("/cours")
     public Map<String,Boolean> suppressionCours(@PathVariable("id") Long coursId) {
@@ -59,8 +59,9 @@ public class ControllerApp {
         return "creationCours";
     }
     @PostMapping("/cours/creation")
-    public Cours creationCours(@RequestBody Cours cours){
-        return coursService.save(cours,applicationContext);
+    public String creationCours(@ModelAttribute Cours cours){
+        coursService.save(cours,applicationContext);
+        return "redirect:/cours";
     }
     @GetMapping("/cours/modification")
     public String modifcationCours(@PathVariable("id") Long coursId, Model model){
@@ -113,9 +114,10 @@ public class ControllerApp {
         return "creationEleve";
     }
     @PostMapping("/eleve/creation")
-    public String creationEleve(@RequestBody Eleve eleve){
+    public String creationEleve(@ModelAttribute Eleve eleve){
+        Map<String, Boolean> response = new HashMap<>();
         eleveService.save(eleve,applicationContext);
-        return "consultationEleve";
+        return "redirect:/eleve";
     }
     /*
     * FIN PARTI ELEVE
@@ -155,8 +157,9 @@ public class ControllerApp {
         return "creationSalle";
     }
     @PostMapping("/salle/creation")
-    public Salle creationSalle(@RequestBody Salle salle) {
-        return salleService.save(salle,applicationContext);
+    public String creationSalle(@RequestBody Salle salle) {
+        salleService.save(salle,applicationContext);
+        return "redirect:/salle";
     }
 
     /*

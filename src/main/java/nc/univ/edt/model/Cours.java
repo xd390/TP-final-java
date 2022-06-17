@@ -82,4 +82,8 @@ public class Cours {
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

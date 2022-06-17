@@ -8,7 +8,7 @@ public class Eleve {
      * Id de l avatar
      */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -86,5 +86,9 @@ public class Eleve {
 
     public void setCours(Cours cours) {
         this.cours = cours;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
