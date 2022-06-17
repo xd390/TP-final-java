@@ -148,7 +148,8 @@ public class ControllerApp {
         return "redirect:/salle";
     }
     @GetMapping("/salle/creation")
-    public String creationSalle(){
+    public String creationSalle(Model model){
+        model.addAttribute("salle", new Salle());
         return "creationSalle";
     }
     @PostMapping("/salle/creation")
