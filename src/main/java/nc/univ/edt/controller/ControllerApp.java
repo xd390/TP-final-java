@@ -33,26 +33,74 @@ public class ControllerApp {
         return salle;
     }
 
-    @GetMapping("cours")
+    /*
+     * DEBUT PARTI COURS
+     *
+     * */
+    @GetMapping("/cours")
     public String consultationCours(Model model) {
         List<Cours> cours = coursService.getAll(applicationContext);
         model.addAttribute("cours", cours);
         return "view/cours/consultationCours";
     }
+    @DeleteMapping("/cours")
+    public Map<String,Boolean> suppressionCours(@PathVariable("id") Long coursId) {
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", coursService.delete(coursId, applicationContext));
+        return response;
+    }
     @GetMapping("/cours/creation")
-    public String CreationCours(){
+    public String creationCours(){
         return "creationCours";
     }
     @PostMapping("/cours/creation")
     public Cours creationCours(@RequestBody Cours cours){
         return coursService.save(cours,applicationContext);
     }
+    @GetMapping("/cours/modification")
+    public String modifcationCours(@PathVariable("id") Long coursId, Model model){
+        model.addAttribute("cours",coursService.get(coursId,applicationContext));
+        return "modificationCours";
+    }
+    @PutMapping("/cours/modification")
+    public Map<String,Boolean> modificationCours(@PathVariable("id") Long coursId,@RequestBody Cours cours){
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("updated", coursService.update(coursId,cours, applicationContext));
+        return response;
+    }
+    /*
+     * FIN PARTI COURS
+     *
+     * */
+
+    /*
+     * DEBUT PARTI ELEVE
+     *
+     * */
 
     @GetMapping("/eleve")
     public String consultationEleve(Model model){
         List<Eleve> eleves = eleveService.getAll(applicationContext);
         model.addAttribute("eleves",eleves);
         return "consultationEleve";
+    }
+    @DeleteMapping("/eleve")
+    public Map<String,Boolean> suppressionEleve(@PathVariable("id") Long eleveId){
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted",eleveService.delete(eleveId,applicationContext));
+        return response;
+    }
+    @GetMapping("/eleve/modification")
+    public String modificationEleve(@PathVariable("id") Long eleveId,Model model){
+        model.addAttribute("eleve",eleveService.get(eleveId,applicationContext));
+        return "modificationEleve";
+
+    }
+    @PutMapping("/eleve/modification")
+    public Map<String,Boolean> modificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("updated", eleveService.update(eleveId,eleve, applicationContext));
+        return response;
     }
     @GetMapping("/eleve/creation")
     public String creationEleve(){
@@ -62,6 +110,15 @@ public class ControllerApp {
     public Eleve creationEleve(@RequestBody Eleve eleve){
         return eleveService.save(eleve,applicationContext);
     }
+    /*
+    * FIN PARTI ELEVE
+    *
+    * */
+
+    /*
+    * DEBUT PARTIE SALLE
+    *
+    * */
 
     @GetMapping("/salle")
     public String consultationSalle(Model model){
@@ -80,6 +137,12 @@ public class ControllerApp {
         model.addAttribute("salle",salleService.get(salleId,applicationContext));
         return "modificationSalle";
     }
+    @PutMapping("/salle/modification")
+    public Map<String,Boolean> modificationSalle(@PathVariable("id") Long salleId,@RequestBody Salle salle){
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("updated", salleService.update(salleId,salle, applicationContext));
+        return response;
+    }
     @GetMapping("/salle/creation")
     public String creationSalle(){
         return "creationSalle";
@@ -89,4 +152,8 @@ public class ControllerApp {
         return salleService.save(salle,applicationContext);
     }
 
+    /*
+     * FIN PARTIE SALLE
+     *
+     * */
 }

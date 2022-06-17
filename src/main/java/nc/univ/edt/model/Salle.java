@@ -36,12 +36,24 @@ public class Salle {
         return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getNom() {
         return nom;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public int getNbPlaces() {
         return nbPlaces;
+    }
+
+    public void setNbPlaces(int nbPlaces) {
+        this.nbPlaces = nbPlaces;
     }
 
     public Long getId() {
