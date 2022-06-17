@@ -69,7 +69,7 @@ public class ControllerApp {
         return "modificationCours";
     }
     @PutMapping("/cours/modification")
-    public Map<String,Boolean> modificationCours(@PathVariable("id") Long coursId,@RequestBody Cours cours){
+    public Map<String,Boolean> modificationCours(@PathVariable("id") Long coursId,@ModelAttribute Cours cours){
         Map<String, Boolean> response = new HashMap<>();
         response.put("updated", coursService.update(coursId,cours, applicationContext));
         return response;
@@ -103,7 +103,7 @@ public class ControllerApp {
 
     }
     @PutMapping("/eleve/modification")
-    public Map<String,Boolean> applyModificationEleve(@PathVariable("id") Long eleveId,@RequestBody Eleve eleve){
+    public Map<String,Boolean> applyModificationEleve(@PathVariable("id") Long eleveId,@ModelAttribute Eleve eleve){
         Map<String, Boolean> response = new HashMap<>();
         response.put("updated", eleveService.update(eleveId,eleve, applicationContext));
         return response;
@@ -114,7 +114,7 @@ public class ControllerApp {
         return "creationEleve";
     }
     @PostMapping("/eleve/creation")
-    public String applyCreateEleve(@RequestBody Eleve eleve){
+    public String applyCreateEleve(@ModelAttribute Eleve eleve){
         eleveService.save(eleve,applicationContext);
         return "redirect:/eleve";
     }
@@ -151,7 +151,7 @@ public class ControllerApp {
         return "modificationSalle";
     }
     @PutMapping("/salle/modification")
-    public Map<String,Boolean> modificationSalle(@PathVariable("id") Long salleId,@RequestBody Salle salle){
+    public Map<String,Boolean> modificationSalle(@PathVariable("id") Long salleId,@ModelAttribute Salle salle){
         Map<String, Boolean> response = new HashMap<>();
         response.put("updated", salleService.update(salleId,salle, applicationContext));
         return response;
@@ -161,7 +161,7 @@ public class ControllerApp {
         return "creationSalle";
     }
     @PostMapping("/salle/creation")
-    public String creationSalle(@RequestBody Salle salle) {
+    public String creationSalle(@ModelAttribute Salle salle) {
         salleService.save(salle,applicationContext);
         return "redirect:/salle";
     }
