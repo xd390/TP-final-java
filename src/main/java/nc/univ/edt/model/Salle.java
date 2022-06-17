@@ -73,4 +73,8 @@ public class Salle {
     public void setCours(List<Cours> cours) {
         this.cours = cours;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
