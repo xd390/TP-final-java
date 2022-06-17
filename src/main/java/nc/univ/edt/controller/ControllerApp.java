@@ -54,7 +54,8 @@ public class ControllerApp {
         return "redirect:/cours";
     }
     @GetMapping("/cours/creation")
-    public String creationCours(){
+    public String creationCours(Model model){
+        model.addAttribute("cours", new Cours());
         return "creationCours";
     }
     @PostMapping("/cours/creation")
